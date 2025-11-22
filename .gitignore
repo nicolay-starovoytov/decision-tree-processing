@@ -1,0 +1,23 @@
+node_modules
+npm-debug.log
+
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+*.ids
+.idea
+
+# Mac OS X
+.DS_Store
+
+# VS Code
+.vscode
+
+#type script
+.tscache
+*.d.ts
+*.js.map
+
+# user specific config files
+configs/development*
