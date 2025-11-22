@@ -20,8 +20,109 @@ cd decision-tree-processing
 
 npm i
 
-## Income task structure
+## Income tasks structure
 
-The income task should be in JSON format. It should have the following structure:
+Current solution supports not only tree, but also forest (multiple trees) since we want to be able to execute several actions in a chain.
 
+The income tree should be in JSON format. Base format:
+```json
+{
+  "actions": [
+    {}, {}, ...
+  ]
+}
+```
+where each object is action of specific type.  
 
+Tree can contain 4 types of actions:
+1. Send SMS. The structure of action:
+```json
+{
+  "type": "SEND_SMS",
+  "phoneNumber": "+1234567890",
+  "message": "Your message here"
+}
+```
+2. Send Email. The structure of action:
+```json
+{
+  "type": "SEND_EMAIL",
+  "sender": "sender@mail.com",
+  "receiver": "receiver@mail.com",
+  "message": "Your message here"
+}
+```
+3. Condition. Evaluates Javascript expression and running appropriate action. The structure:
+```json
+{
+  "type": "CONDITION",
+  "expression": "5 > Math.random() * 10",
+  "trueAction": {...},
+  "falseAction": {...},
+}
+```
+P.s. trueAction and falseAction can be null if no action is needed in that case.
+4. Loop. Evaluates Javascript expression and running appropriate action. The structure:
+```json
+{
+  "type": "LOOP",
+  "count": 10,
+  "subtree": [{...}, {...}...]
+}
+```
+
+## Examples of trees that can be processed:
+1. Christmas Greeting
+```json
+{
+  "actions": [{
+    "type": "CONDITION",
+    "expression": "(new Date()).getDate() === 1 && (new Date()).getMonth() === 0",
+    "trueAction": {
+      "type": "SEND_SMS",
+      "phoneNumber": "+1234567890",
+      "message": "Happy Christmas"
+    },
+    "falseAction": null
+  }]
+}
+```
+
+2. Chained actions
+```json
+{
+  "actions": [{
+    "type": "SEND_EMAIL",
+    "sender": "sender@mail.com",
+    "receiver": "receiver@mail.com",
+    "message": "Your message here"
+  }, {
+    "type": "SEND_SMS",
+    "phoneNumber": "+1234567890",
+    "message": "Your message here"
+  }, {
+    "type": "SEND_EMAIL",
+    "sender": "sender@mail.com",
+    "receiver": "receiver@mail.com",
+    "message": "Your message here"
+  }]
+}
+```
+
+3. Send optional emails
+```json
+{
+  "type": "LOOP",
+  "count": 10,
+  "subtree": [{
+    "type": "CONDITION",
+    "expression": "5 > Math.random() * 10",
+    "trueAction": {
+      "type": "SEND_SMS",
+      "phoneNumber": "+1234567890",
+      "message": "Happy Christmas"
+    },
+    "falseAction": null
+  }]
+}
+```
