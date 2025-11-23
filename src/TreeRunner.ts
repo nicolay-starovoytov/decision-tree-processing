@@ -1,10 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 
-import { actionFactory } from "ActionFactory";
-import { actionRegistry } from "ActionRegistry";
-import { ActionType } from "enum/Action";
-import { Action } from "Action";
+import { actionFactory } from 'ActionFactory';
+import { actionRegistry } from 'ActionRegistry';
+import { ActionType } from 'enum/Action';
+import { Action } from 'Action';
 
 export class TreeRunner {
   private static readonly ACTIONS_FOLDER: string = 'actions';
@@ -36,7 +36,7 @@ export class TreeRunner {
     }
 
     const actionsDir = path.join(__dirname, TreeRunner.ACTIONS_FOLDER);
-    const files = fs.readdirSync(actionsDir).filter(f => f.endsWith(TreeRunner.ACTIONS_FILE_EXTENSION));
+    const files = fs.readdirSync(actionsDir).filter((f) => f.endsWith(TreeRunner.ACTIONS_FILE_EXTENSION));
 
     for (const file of files) {
       const filePath = path.join(actionsDir, file);

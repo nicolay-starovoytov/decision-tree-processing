@@ -3,7 +3,7 @@ import { hideBin } from 'yargs/helpers';
 import { logger } from 'logger';
 
 import { treeRunner } from 'TreeRunner';
-import { inputValidator } from "validator/InputValidator";
+import { inputValidator } from 'validator/InputValidator';
 import { ActionObject } from 'model/ActionObject';
 
 const options = yargs(hideBin(process.argv))
@@ -12,8 +12,8 @@ const options = yargs(hideBin(process.argv))
       alias: 't',
       describe: 'Tree with actions to be processed in JSON format. See README for details',
       string: true,
-      demandOption: true
-    }
+      demandOption: true,
+    },
   })
   .check(inputValidator.validateJSONTree)
   .parseSync();

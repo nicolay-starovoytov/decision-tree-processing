@@ -1,7 +1,7 @@
 import { ActionType } from 'enum/Action';
 import { Action } from 'Action';
 import { ActionObject } from 'model/ActionObject';
-import { actionFactory } from "ActionFactory";
+import { actionFactory } from 'ActionFactory';
 
 export class Loop implements Action {
   public static type: string = ActionType.CONDITION;

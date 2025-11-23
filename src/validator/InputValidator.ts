@@ -13,7 +13,7 @@ export class InputValidator {
     try {
       treeObj = JSON.parse(tree);
     } catch (_err) {
-      throw new Error(`Invalid JSON format for tree`);
+      throw new Error('Invalid JSON format for tree');
     }
 
     if (!Array.isArray(treeObj.actions)) {
