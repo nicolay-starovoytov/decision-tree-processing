@@ -16,10 +16,7 @@ describe('Loop tests', () => {
       const loopNode: ActionObject = {
         type: ActionType.LOOP,
         count: 3,
-        subtree: [
-          { type: ActionType.SEND_SMS },
-          { type: ActionType.SEND_EMAIL }
-        ]
+        subtree: [{ type: ActionType.SEND_SMS }, { type: ActionType.SEND_EMAIL }],
       };
 
       const loopAction = new Loop(loopNode);

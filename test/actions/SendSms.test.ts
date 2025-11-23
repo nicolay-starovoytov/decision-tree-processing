@@ -2,7 +2,7 @@ import { Action } from 'action/Action';
 import { SendSms } from 'action/SendSms';
 import { ActionObject } from 'model/ActionObject';
 import { ActionType } from 'enum/Action';
-import { logger } from "logger";
+import { logger } from 'logger';
 
 describe('SendSms tests', () => {
   describe('execute()', () => {
@@ -12,7 +12,7 @@ describe('SendSms tests', () => {
       const actionObject: ActionObject = {
         type: ActionType.SEND_SMS,
         phoneNumber: '+1234567890',
-        message: 'Test SMS message'
+        message: 'Test SMS message',
       };
 
       const action: Action = new SendSms(actionObject);
