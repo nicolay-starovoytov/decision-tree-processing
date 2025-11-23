@@ -1,5 +1,5 @@
 import { ActionType } from 'enum/Action';
-import { Action } from 'Action';
+import { Action } from 'action/Action';
 import { actionFactory } from 'ActionFactory';
 import { ActionObject } from 'model/ActionObject';
 

@@ -2,7 +2,7 @@ import { ActionRegistered } from 'error/ActionRegistered';
 import { ActionNotRegistered } from 'error/ActionNotRegistered';
 import { ActionType } from 'enum/Action';
 import { ActionObject } from 'model/ActionObject';
-import { Action } from 'Action';
+import { Action } from 'action/Action';
 
 export class ActionRegistry {
   private static instance: ActionRegistry | null = null;

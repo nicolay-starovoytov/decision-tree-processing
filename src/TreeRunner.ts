@@ -4,10 +4,10 @@ import path from 'path';
 import { actionFactory } from 'ActionFactory';
 import { actionRegistry } from 'ActionRegistry';
 import { ActionType } from 'enum/Action';
-import { Action } from 'Action';
+import { Action } from 'action/Action';
 
 export class TreeRunner {
-  private static readonly ACTIONS_FOLDER: string = 'actions';
+  private static readonly ACTIONS_FOLDER: string = 'action';
   private static readonly ACTIONS_FILE_EXTENSION: string = '.ts';
   private static readonly FUNCTION: string = 'function';
 

@@ -1,5 +1,5 @@
 import { ActionType } from 'enum/Action';
-import { Action } from 'Action';
+import { Action } from 'action/Action';
 import { ActionObject } from 'model/ActionObject';
 import { logger } from 'logger';
 
