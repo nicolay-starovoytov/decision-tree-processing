@@ -3,8 +3,8 @@ import { Action } from 'action/Action';
 import { ActionObject } from 'model/ActionObject';
 import { actionFactory } from 'ActionFactory';
 
-export class Loop implements Action {
-  public static type: string = ActionType.CONDITION;
+export class Condition implements Action {
+  public static type: ActionType = ActionType.CONDITION;
   private readonly expression: string;
   private readonly trueActions: ActionObject[];
   private readonly falseActions: ActionObject[];
@@ -16,7 +16,7 @@ export class Loop implements Action {
   }
 
   public execute(): void {
-    Loop.runActions(eval(this.expression) ? this.trueActions : this.falseActions);
+    Condition.runActions(eval(this.expression) ? this.trueActions : this.falseActions);
   }
 
   private static runActions(actions: ActionObject[]): void {

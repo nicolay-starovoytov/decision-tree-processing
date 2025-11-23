@@ -11,21 +11,23 @@
   },
   "scripts": {
     "start": "ts-node -r tsconfig-paths/register src/processor.ts",
-    "test": "",
+    "test": "jest",
     "lint": "eslint .",
     "format": "prettier . --write"
   },
   "devDependencies": {
     "@eslint/js": "9.39.1",
+    "@types/jest": "30.0.0",
     "@types/node": "24.10.1",
     "eslint": "9.39.1",
     "eslint-config-prettier": "10.1.8",
     "jest": "30.2.0",
     "prettier": "3.6.2",
+    "ts-jest": "29.4.5",
     "ts-node": "10.9.2",
+    "tsconfig-paths": "4.2.0",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.47.0",
-    "tsconfig-paths": "4.2.0"
+    "typescript-eslint": "8.47.0"
   },
   "dependencies": {
     "winston": "3.18.3",

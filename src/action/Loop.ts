@@ -4,7 +4,7 @@ import { actionFactory } from 'ActionFactory';
 import { ActionObject } from 'model/ActionObject';
 
 export class Loop implements Action {
-  public static type: string = ActionType.LOOP;
+  public static type: ActionType = ActionType.LOOP;
   private readonly count: number;
   private readonly subtree: ActionObject[];
 

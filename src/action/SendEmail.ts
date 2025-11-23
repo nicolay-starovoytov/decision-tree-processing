@@ -4,7 +4,7 @@ import { ActionObject } from 'model/ActionObject';
 import { logger } from 'logger';
 
 export class SendEmail implements Action {
-  public static type: string = ActionType.SEND_EMAIL;
+  public static type: ActionType = ActionType.SEND_EMAIL;
   private readonly sender: string;
   private readonly receiver: string;
   private readonly message: string;

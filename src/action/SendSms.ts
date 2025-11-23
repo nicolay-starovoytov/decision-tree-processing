@@ -4,7 +4,7 @@ import { ActionObject } from 'model/ActionObject';
 import { logger } from 'logger';
 
 export class SendSms implements Action {
-  public static type: string = ActionType.SEND_SMS;
+  public static type: ActionType = ActionType.SEND_SMS;
   private readonly phoneNumber: string;
   private readonly message: string;
 
