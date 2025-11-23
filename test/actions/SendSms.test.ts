@@ -4,7 +4,7 @@ import { ActionObject } from 'model/ActionObject';
 import { ActionType } from 'enum/Action';
 import { logger } from "logger";
 
-describe('Condition tests', () => {
+describe('SendSms tests', () => {
   describe('execute()', () => {
     it('should log sms message and number', () => {
       const consoleInfoSpy = jest.spyOn(logger, 'info').mockImplementation((): any => {});
