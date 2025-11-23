@@ -121,10 +121,38 @@ Tree can contain 4 types of actions:
       "trueActions": [{
         "type": "SEND_SMS",
         "phoneNumber": "+1234567890",
-        "message": "Happy Christmas"
+        "message": "Notification"
       }],
       "falseActions": []
     }]
   }]
 }
 ```
+
+## Running the solution
+
+To run the solution, from the folder of projece, use the following command:
+
+npm start -- --tree='{{DECISION_TREE_JSON}}'
+
+### Example
+
+`npm start -- --tree='{"actions":[{"type":"LOOP","count":10,"subtree":[{"type":"CONDITION","expression":"5 > Math.random() * 10","trueActions":[{"type":"SEND_SMS","phoneNumber":"+1234567890","message":"Notification"}],"falseActions":[]}]}]}'`
+
+## Test
+
+To run tests, use the command:
+
+`npm test`
+
+## Format
+
+To format code, use the command:
+
+`npm run format`
+
+## Check style and lint
+
+To check code style, use the command:
+
+`npm run lint`
