@@ -4,6 +4,7 @@ import { logger } from 'logger';
 
 import { treeRunner } from 'TreeRunner';
 import { inputValidator } from "validator/InputValidator";
+import {ActionType} from "./enum/Action";
 
 const options: any = yargs(hideBin(process.argv))
   .options({
@@ -22,5 +23,5 @@ process.on('unhandledRejection', (error: Error) => {
 });
 
 (async () => {
-  await treeRunner.run(JSON.parse(options.tree) as any);
+  await treeRunner.run(JSON.parse(options.tree) as { actions: { type: ActionType }[] });
 })();

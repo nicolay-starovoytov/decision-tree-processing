@@ -10,15 +10,15 @@ To setup service, need to first install nodejs (>= v24), npm and git. Then follo
 
 1. Clone the repository:
 
-git clone https://github.com/nicolay-starovoytov/decision-tree-processing
+`git clone https://github.com/nicolay-starovoytov/decision-tree-processing`
 
 2. Go to the created folder:
 
-cd decision-tree-processing
+`cd decision-tree-processing`
 
 3. Install dependencies:
 
-npm i
+`npm i`
 
 ## Income tree structure
 
@@ -57,8 +57,8 @@ Tree can contain 4 types of actions:
 {
   "type": "CONDITION",
   "expression": "5 > Math.random() * 10",
-  "trueActions": [{...}, {...}...],
-  "falseActions": [{...}, {...}...]
+  "trueActions": [{...}, {...}, ...],
+  "falseActions": [{...}, {...}, ...]
 }
 ```
 
@@ -67,7 +67,7 @@ Tree can contain 4 types of actions:
 {
   "type": "LOOP",
   "count": 10,
-  "subtree": [{...}, {...}...]
+  "subtree": [{...}, {...}, ...]
 }
 ```
 
@@ -133,7 +133,7 @@ Tree can contain 4 types of actions:
 
 To run the solution, from the folder of projece, use the following command:
 
-npm start -- --tree='{{DECISION_TREE_JSON}}'
+`npm start -- --tree='{{DECISION_TREE_JSON}}'`
 
 ### Example
 

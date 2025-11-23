@@ -7,6 +7,10 @@ import { ActionType } from "enum/Action";
 import { Action } from "Action";
 
 export class TreeRunner {
+  private static readonly ACTIONS_FOLDER: string = 'actions';
+  private static readonly ACTIONS_FILE_EXTENSION: string = '.ts';
+  private static readonly FUNCTION: string = 'function';
+
   private static instance: TreeRunner | null = null;
 
   private actionsRegistered: boolean = false;
@@ -31,15 +35,15 @@ export class TreeRunner {
       return;
     }
 
-    const actionsDir = path.join(__dirname, 'actions');
-    const files = fs.readdirSync(actionsDir).filter(f => f.endsWith('.ts'));
+    const actionsDir = path.join(__dirname, TreeRunner.ACTIONS_FOLDER);
+    const files = fs.readdirSync(actionsDir).filter(f => f.endsWith(TreeRunner.ACTIONS_FILE_EXTENSION));
 
     for (const file of files) {
       const filePath = path.join(actionsDir, file);
 
       const module = await import(filePath);
       const Class = module.default || module[Object.keys(module)[0]];
-      if (typeof Class === 'function') {
+      if (typeof Class === TreeRunner.FUNCTION) {
         actionRegistry.registerAction(Class.type, Class);
       }
     }
