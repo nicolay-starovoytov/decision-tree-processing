@@ -3,7 +3,7 @@ import path from 'path';
 
 import { actionFactory } from 'ActionFactory';
 import { actionRegistry } from 'ActionRegistry';
-import { ActionType } from 'enum/Action';
+import { ActionObject } from 'model/ActionObject';
 import { Action } from 'action/Action';
 
 export class TreeRunner {
@@ -22,7 +22,7 @@ export class TreeRunner {
     return this.instance;
   }
 
-  public async run(tree: { actions: { type: ActionType }[] }): Promise<void> {
+  public async run(tree: { actions: ActionObject[] }): Promise<void> {
     await this.registerActions();
     const actions: Action[] = tree.actions.map(actionFactory.createAction);
     for (const action of actions) {

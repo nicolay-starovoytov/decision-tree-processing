@@ -1,4 +1,4 @@
-import { ActionType } from 'enum/Action';
+import { ActionObject } from 'model/ActionObject';
 import { Action } from 'action/Action';
 import { actionRegistry } from 'ActionRegistry';
 
@@ -12,7 +12,7 @@ export class ActionFactory {
     return this.instance;
   }
 
-  public createAction(node: { type: ActionType }): Action {
+  public createAction(node: ActionObject): Action {
     const ActionClass = actionRegistry.getAction(node.type);
     return new ActionClass(node);
   }
