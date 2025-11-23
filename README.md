@@ -20,7 +20,7 @@ cd decision-tree-processing
 
 npm i
 
-## Income tasks structure
+## Income tree structure
 
 Current solution supports not only tree, but also forest (multiple trees) since we want to be able to execute several actions in a chain.
 
@@ -57,11 +57,11 @@ Tree can contain 4 types of actions:
 {
   "type": "CONDITION",
   "expression": "5 > Math.random() * 10",
-  "trueAction": {...},
-  "falseAction": {...},
+  "trueActions": [{...}, {...}...],
+  "falseActions": [{...}, {...}...]
 }
 ```
-P.s. trueAction and falseAction can be null if no action is needed in that case.
+
 4. Loop. Evaluates Javascript expression and running appropriate action. The structure:
 ```json
 {
@@ -78,12 +78,12 @@ P.s. trueAction and falseAction can be null if no action is needed in that case.
   "actions": [{
     "type": "CONDITION",
     "expression": "(new Date()).getDate() === 1 && (new Date()).getMonth() === 0",
-    "trueAction": {
+    "trueActions": [{
       "type": "SEND_SMS",
       "phoneNumber": "+1234567890",
       "message": "Happy Christmas"
-    },
-    "falseAction": null
+    }],
+    "falseActions": []
   }]
 }
 ```
@@ -112,17 +112,19 @@ P.s. trueAction and falseAction can be null if no action is needed in that case.
 3. Send optional emails
 ```json
 {
-  "type": "LOOP",
-  "count": 10,
-  "subtree": [{
-    "type": "CONDITION",
-    "expression": "5 > Math.random() * 10",
-    "trueAction": {
-      "type": "SEND_SMS",
-      "phoneNumber": "+1234567890",
-      "message": "Happy Christmas"
-    },
-    "falseAction": null
+  "actions": [{
+    "type": "LOOP",
+    "count": 10,
+    "subtree": [{
+      "type": "CONDITION",
+      "expression": "5 > Math.random() * 10",
+      "trueActions": [{
+        "type": "SEND_SMS",
+        "phoneNumber": "+1234567890",
+        "message": "Happy Christmas"
+      }],
+      "falseActions": []
+    }]
   }]
 }
 ```
