@@ -1,15 +1,16 @@
 import { ActionType } from 'enum/Action';
 import { Action } from 'Action';
 import { actionFactory } from "ActionFactory";
+import { ActionObject } from 'model/ActionObject';
 
 export class Loop implements Action {
   public static type: string = ActionType.LOOP;
   private readonly count: number;
-  private readonly subtree: any[];
+  private readonly subtree: ActionObject[];
 
-  public constructor(node: any) {
-    this.count = node.count;
-    this.subtree = node.subtree;
+  public constructor(node: ActionObject) {
+    this.count = node.count as number;
+    this.subtree = node.subtree as ActionObject[];
   }
 
   public execute(): void {

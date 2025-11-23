@@ -12,8 +12,8 @@ export class InputValidator {
     let treeObj;
     try {
       treeObj = JSON.parse(tree);
-    } catch (err) {
-      throw new Error('Invalid JSON format for tree');
+    } catch (_err) {
+      throw new Error(`Invalid JSON format for tree`);
     }
 
     if (!Array.isArray(treeObj.actions)) {

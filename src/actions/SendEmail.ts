@@ -1,5 +1,6 @@
 import { ActionType } from 'enum/Action';
 import { Action } from 'Action';
+import { ActionObject } from 'model/ActionObject';
 import { logger } from 'logger';
 
 export class SendEmail implements Action {
@@ -8,10 +9,10 @@ export class SendEmail implements Action {
   private readonly receiver: string;
   private readonly message: string;
 
-  public constructor(node: any) {
-    this.sender = node.sender;
-    this.receiver = node.receiver;
-    this.message = node.message;
+  public constructor(node: ActionObject) {
+    this.sender = node.sender as string;
+    this.receiver = node.receiver as string;
+    this.message = node.message as string;
   }
 
   public execute(): void {

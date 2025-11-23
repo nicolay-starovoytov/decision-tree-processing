@@ -4,9 +4,9 @@ import { logger } from 'logger';
 
 import { treeRunner } from 'TreeRunner';
 import { inputValidator } from "validator/InputValidator";
-import {ActionType} from "./enum/Action";
+import { ActionObject } from 'model/ActionObject';
 
-const options: any = yargs(hideBin(process.argv))
+const options = yargs(hideBin(process.argv))
   .options({
     tree: {
       alias: 't',
@@ -16,12 +16,12 @@ const options: any = yargs(hideBin(process.argv))
     }
   })
   .check(inputValidator.validateJSONTree)
-  .argv;
+  .parseSync();
 
 process.on('unhandledRejection', (error: Error) => {
   logger.error(`Error during processing tree: ${error.message}`);
 });
 
 (async () => {
-  await treeRunner.run(JSON.parse(options.tree) as { actions: { type: ActionType }[] });
+  await treeRunner.run(JSON.parse(options.tree) as { actions: ActionObject[] });
 })();

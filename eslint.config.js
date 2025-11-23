@@ -8,5 +8,11 @@ export default [
   prettierConfig,
   {
     files: ['**/*.ts'],
-  },
+    rules: {
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { caughtErrorsIgnorePattern: '^_' }
+      ],
+    },
+  }
 ];
