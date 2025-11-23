@@ -2,12 +2,12 @@ import { Action } from 'action/Action';
 import { SendSms } from 'action/SendSms';
 import { ActionObject } from 'model/ActionObject';
 import { ActionType } from 'enum/Action';
-import { logger } from 'logger';
+import { logger, Logger } from 'logger';
 
 describe('SendSms tests', () => {
   describe('execute()', () => {
     it('should log sms message and number', () => {
-      const consoleInfoSpy = jest.spyOn(logger, 'info').mockImplementation((): any => {});
+      const consoleInfoSpy = jest.spyOn(logger, 'info').mockImplementation((): Logger => ({}) as Logger);
 
       const actionObject: ActionObject = {
         type: ActionType.SEND_SMS,

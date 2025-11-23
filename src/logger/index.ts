@@ -1,1 +1,1 @@
-export { logger } from 'logger/logger';
+export { logger, Logger } from 'logger/logger';

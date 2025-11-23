@@ -2,12 +2,12 @@ import { Action } from 'action/Action';
 import { SendEmail } from 'action/SendEmail';
 import { ActionObject } from 'model/ActionObject';
 import { ActionType } from 'enum/Action';
-import { logger } from 'logger';
+import { logger, Logger } from 'logger';
 
 describe('SendEmail tests', () => {
   describe('execute()', () => {
     it('should log email message, sender and receiver', () => {
-      const consoleInfoSpy = jest.spyOn(logger, 'info').mockImplementation((): any => {});
+      const consoleInfoSpy = jest.spyOn(logger, 'info').mockImplementation((): Logger => ({}) as Logger);
 
       const actionObject: ActionObject = {
         type: ActionType.SEND_EMAIL,
